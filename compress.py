@@ -16,7 +16,7 @@ def main() -> None:
         raise Exception(f'File {image_path} does not exist.')
 
     try:
-        image_quality = sys.argv[2]
+        image_quality = int(sys.argv[2])
         if image_quality < 0 or image_quality > 100:
             raise Exception(f'Requeted image quality {image_quality} out of bounds [0, 100].')
     except IndexError:
@@ -25,7 +25,7 @@ def main() -> None:
     image = Image.open(image_path)
     directory, filename = os.path.split(image_path)
     save_path = os.path.join(directory, (f'COMPRESSED-QUAL={image_quality}' + '_' + filename))
-    image.save(save_path, quality = 95)
+    image.save(save_path, quality = image_quality)
     print('Compressed filesize:', str(round(bytes_to_megabytes(os.path.getsize(save_path)), 2)) + 'MB')
 
 
