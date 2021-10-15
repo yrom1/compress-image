@@ -23,10 +23,6 @@ def main() -> None:
     image_quality = args.quality
     verbose = args.verbose
 
-    if image_path == None:
-        parser.print_help()
-        sys.exit(0)
-
     image = Image.open(image_path)
     directory, filename = os.path.split(image_path)
     save_path = os.path.join(directory, (f'COMPRESSED-QUAL={image_quality}_{filename}'))
