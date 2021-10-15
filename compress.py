@@ -6,11 +6,11 @@ from PIL import Image
 def bytes_to_megabytes(bytes: int) -> int:
     return bytes * (1 / 10**6)
 
-def file_path(string):
-    if os.path.isfile(string):
-        return string
+def file_path(filepath: str) -> str:
+    if os.path.isfile(filepath):
+        return filepath
     else:
-        raise FileNotFoundError(string)
+        raise FileNotFoundError(filepath)
 
 def main() -> None:
     parser = argparse.ArgumentParser(description='read image from filepath and save a compressed version')
