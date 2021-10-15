@@ -13,10 +13,10 @@ def file_path(string):
         raise FileNotFoundError(string)
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description='Read image from filepath and save a compressed version.')
-    parser.add_argument('-f', '--filepath', type=file_path, help='Full filepath to image.')
-    parser.add_argument('-q', '--quality', type=int, help='Compression quality, range [0, 100], default 90 (slight compression).', metavar='QUALITY', nargs='?', choices=list(range(1,101)), default=90)
-    parser.add_argument('-v','--verbose', action='store_true', help='Verbose filesize change information.')
+    parser = argparse.ArgumentParser(description='read image from filepath and save a compressed version')
+    parser.add_argument('filepath', type=file_path, help='full filepath to image')
+    parser.add_argument('-q', '--quality', type=int, help='compression quality, [0, 100], default 90 (slight compression).', metavar='QUALITY', nargs='?', choices=list(range(1,101)), default=90)
+    parser.add_argument('-v','--verbose', action='store_true', help='verbose filesize change information')
     args = parser.parse_args()
 
     image_path = args.filepath
