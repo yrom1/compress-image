@@ -62,7 +62,7 @@ def main() -> None:
             print("Image compression level:", image_quality)
             print("Original image filetype:", extension)
             print("Original filesize:", str(round(original_size, 2)), "MB")
-        print("Compressed jpg filesize:", str(round(compressed_size, 2)), "MB", end="") #  this line is continued in next print statement
+        print(f"Compressed{' jpg ' if verbose else ' '}filesize:", str(round(compressed_size, 2)), "MB", end="") #  this line is continued in next print statement
 
         if verbose:
             print(
