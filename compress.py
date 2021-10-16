@@ -48,7 +48,7 @@ def main() -> None:
 
     png_image = Image.open(image_path)
     directory, filename_with_extension = os.path.split(image_path)
-    filename, _ = os.path.splitext(filename_with_extension)
+    filename, extension = os.path.splitext(filename_with_extension)
     save_path = os.path.join(directory, ((f"COMPRESSED-QUAL={image_quality}_{filename}") + '.jpg'))
     jpg_image = png_image.convert('RGB')
     jpg_image.save(save_path, quality=image_quality, optimize=True)
@@ -60,8 +60,9 @@ def main() -> None:
     if not suppress:
         if verbose:
             print("Image compression level:", image_quality)
+            print("Original image filetype:", extension)
             print("Original filesize:", str(round(original_size, 2)), "MB")
-        print("Compressed filesize:", str(round(compressed_size, 2)), "MB", end="")
+        print("Compressed jpg filesize:", str(round(compressed_size, 2)), "MB", end="") #  this line is continued in next print statement
 
         if verbose:
             print(
