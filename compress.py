@@ -52,7 +52,6 @@ def main() -> None:
     save_path = os.path.join(directory, ((f"COMPRESSED-QUAL={image_quality}_{filename}") + '.jpg'))
     jpg_image = png_image.convert('RGB')
     jpg_image.save(save_path, quality=image_quality, optimize=True)
-    print(image_quality)
     original_size = bytes_to_megabytes(os.path.getsize(image_path))
     compressed_size = bytes_to_megabytes(os.path.getsize(save_path))
     compression_size_drop = original_size - compressed_size
