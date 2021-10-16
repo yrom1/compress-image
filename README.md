@@ -19,22 +19,22 @@ optional arguments:
 
 # Usage Examples
 ```
-$ python3 compress.py '/home/ryan/Downloads/Eunji_Digital Photobook vol.2_019.jpg'
+$ python3 compress.py '/home/ryan/Downloads/image.jpg'
 Compressed filesize: 1.86 MB
 ```
 ```
-$ python3 compress.py '/home/ryan/Downloads/Eunji_Digital Photobook vol.2_019.jpg' -v
+$ python3 compress.py '/home/ryan/Downloads/image.jpg' -v
 Image compression level: 90
 Original image filetype: .jpg
 Original filesize: 8.07 MB
 Compressed jpg filesize: 1.86 MB (-6.21 MB, -76.96%)
 ```
 ```
-$ python3 compress.py '/home/ryan/Downloads/Eunji_Digital Photobook vol.2_019.jpg' -s
+$ python3 compress.py '/home/ryan/Downloads/image.jpg' -s
 $ 
 ```
 ```
-$ python3 compress.py '/home/ryan/Downloads/Eunji_Digital Photobook vol.2_019.jpg' -v -q 50
+$ python3 compress.py '/home/ryan/Downloads/image.jpg' -v -q 50
 Image compression level: 50
 Original image filetype: .jpg
 Original filesize: 8.07 MB
