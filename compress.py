@@ -26,7 +26,6 @@ def main() -> None:
         type=int,
         help="compression quality, [0, 100], default 90 (slight compression).",
         metavar="QUALITY",
-        nargs="?",
         choices=list(range(1, 101)),
         default=90,
     )
