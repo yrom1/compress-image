@@ -11,7 +11,9 @@ with open('TEST-README.md', 'w') as f:
         f.write('```\n')
 
     f.write('# Help\n')
-    write_subprocess_to_markdown('python3 compress.py --help')
+    write_subprocess_to_markdown("python3 compress.py --help")
 
     f.write('# Usage Examples\n')
-    write_subprocess_to_markdown('python3 compress.py')
+    write_subprocess_to_markdown("python3 compress.py")
+    write_subprocess_to_markdown("python3 compress.py '/home/ryan/Downloads/image.jpg' -s")
+    write_subprocess_to_markdown("python3 compress.py '/home/ryan/Downloads/image.jpg' -v -q 50")
