@@ -49,7 +49,7 @@ def main() -> None:
     image = Image.open(image_path)
     directory, filename = os.path.split(image_path)
     save_path = os.path.join(directory, (f"COMPRESSED-QUAL={image_quality}_{filename}"))
-    image.save(save_path, quality=image_quality)
+    image.save(save_path, quality=image_quality, optimize=True)
     print(image_quality)
     original_size = bytes_to_megabytes(os.path.getsize(image_path))
     compressed_size = bytes_to_megabytes(os.path.getsize(save_path))
