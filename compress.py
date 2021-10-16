@@ -30,13 +30,14 @@ def main() -> None:
         choices=list(range(1, 101)),
         default=90,
     )
-    parser.add_argument(
+    group = parser.add_mutually_exclusive_group(required=False)
+    group.add_argument(
         "-v",
         "--verbose",
         action="store_true",
         help="verbose filesize change information",
     )
-    parser.add_argument(
+    group.add_argument(
         "-s", "--suppress", action="store_true", help="suppress print statements"
     )
     args = parser.parse_args()
