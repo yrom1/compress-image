@@ -4,8 +4,8 @@ TEST_IMAGE_FILEPATH = '/home/ryan/Downloads/image.png'
 
 with open('README.md', 'w') as f:
     def write_subprocess_to_markdown(command_list: list[str]) -> str:
-        f.write('```')
-        f.write(' '.join(command_list))
+        f.write('```\n')
+        f.write('$ ' + ' '.join(command_list))
         f.write('\n')
         result = subprocess.run(command_list, capture_output=True, text=True)
         f.write(result.stdout)
