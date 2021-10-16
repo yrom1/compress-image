@@ -5,7 +5,7 @@ from PIL import Image
 
 
 def bytes_to_megabytes(bytes: int) -> int:
-    return bytes * (1 / 10 ** 6)
+    return bytes * (1 / 1024**2)
 
 
 def file_path(filepath: str) -> str:
