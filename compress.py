@@ -96,6 +96,11 @@ def main() -> None:
                 if compressed_size < adaptive:
                     break
 
+    assert len(SAVED_IMAGES) != 0
+    if len(SAVED_IMAGES) > 1:
+        for filepath in SAVED_IMAGES[0:-1]:
+            os.remove(filepath)
+
     compression_size_drop = original_size - compressed_size
     compression_percent_decrease = (compression_size_drop / original_size) * 100
 
