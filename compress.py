@@ -3,6 +3,8 @@ import sys
 import argparse
 from PIL import Image
 
+DEFAULT_QUALITY = 90
+assert DEFAULT_QUALITY >= 0 and DEFAULT_QUALITY <= 100 and DEFAULT_QUALITY % 5 == 0
 
 def bytes_to_megabytes(bytes: int) -> int:
     return bytes * (1 / 1024 ** 2)
@@ -27,7 +29,7 @@ def main() -> None:
         help="compression quality, [0, 100], default 90 (slight compression).",
         metavar="QUALITY",
         choices=list(range(1, 101)),
-        default=90,
+        default=DEFAULT_QUALITY,
     )
     group = parser.add_mutually_exclusive_group(required=False)
     group.add_argument(
