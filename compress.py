@@ -17,12 +17,20 @@ def file_path(filepath: str) -> str:
     else:
         raise FileNotFoundError(filepath)
 
+def positive_number(num: int) -> int:
+    """Special type for argparse, a positive number."""
+    if num > 0:
+        return num
+    else:
+        raise Exception('Adaptive compression filesize in MiB must be positive.')
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="read image from filepath and save a compressed version"
     )
     parser.add_argument("filepath", type=file_path, help="full filepath to image")
-    parser.add_argument(
+    group_quality = parser.add_mutually_exclusive_group(required=False)
+    group_quality.add_argument(
         "-q",
         "--quality",
         type=int,
@@ -31,14 +39,20 @@ def main() -> None:
         choices=list(range(1, 101)),
         default=DEFAULT_QUALITY,
     )
-    group = parser.add_mutually_exclusive_group(required=False)
-    group.add_argument(
+    group_quality.add_argument(
+        "-a",
+        "--adaptive",
+        type=positive_number,
+        help="Filesize in MiB that adaptive compression will attempt to output less than.",
+    )
+    group_verbosity = parser.add_mutually_exclusive_group(required=False)
+    group_verbosity.add_argument(
         "-v",
         "--verbose",
         action="store_true",
         help="verbose filesize change information",
     )
-    group.add_argument(
+    group_verbosity.add_argument(
         "-s", "--suppress", action="store_true", help="suppress print statements"
     )
     args = parser.parse_args()
