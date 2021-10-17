@@ -14,8 +14,8 @@ optional arguments:
                         compression quality, [0, 100], default 90 (slight
                         compression).
   -a ADAPTIVE, --adaptive ADAPTIVE
-                        Filesize in MiB that adaptive compression will attempt
-                        to output less than.
+                        filesize in MiB that the scipt will attempt to
+                        compress to less than
   -v, --verbose         verbose filesize change information
   -s, --suppress        suppress print statements
 ```

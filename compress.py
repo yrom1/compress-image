@@ -59,7 +59,7 @@ def main() -> None:
         "-a",
         "--adaptive",
         type=positive_number,
-        help="Filesize in MiB that adaptive compression will attempt to output less than.",
+        help="filesize in MiB that the scipt will attempt to compress to less than",
     )
     group_verbosity = parser.add_mutually_exclusive_group(required=False)
     group_verbosity.add_argument(
