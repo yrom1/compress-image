@@ -17,12 +17,12 @@ def file_path(filepath: str) -> str:
     else:
         raise FileNotFoundError(filepath)
 
-def positive_number(num: int) -> int:
+def positive_number(num: str) -> int:
     """Special type for argparse, a positive number."""
-    if num > 0:
-        return num
-    else:
-        raise Exception('Adaptive compression filesize in MiB must be positive.')
+    num = int(num)
+    if num < 0:
+        raise argparse.ArgumentTypeError(f'Adaptive compression filesize in MiB must be positive, given {str(num)}.')
+    return num
 
 def main() -> None:
     parser = argparse.ArgumentParser(
@@ -61,6 +61,8 @@ def main() -> None:
     image_quality = args.quality
     verbose = args.verbose
     suppress = args.suppress
+    adaptive = args.adaptive
+    print(adaptive)
 
     png_image = Image.open(image_path)
     directory, filename_with_extension = os.path.split(image_path)
