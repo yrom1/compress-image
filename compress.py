@@ -87,6 +87,12 @@ def main() -> None:
     else:
         save_path, compressed_size = save_image(image_quality=CURRENT_IMAGE_QUALITY)
 
+    def delete_images():
+        assert len(SAVED_IMAGES) != 0
+        if len(SAVED_IMAGES) > 1:
+            for filepath in SAVED_IMAGES[0:-1]:
+                os.remove(filepath)
+
     SAVED_IMAGES.append(save_path)
     if adaptive is not None:
         if compressed_size > adaptive:
@@ -95,14 +101,17 @@ def main() -> None:
                 SAVED_IMAGES.append(save_path)
                 if compressed_size < adaptive:
                     break
-
-    assert len(SAVED_IMAGES) != 0
-    if len(SAVED_IMAGES) > 1:
-        for filepath in SAVED_IMAGES[0:-1]:
-            os.remove(filepath)
+            else:
+                delete_images()
+                Exception(f'Adaptive compression was not able to compress ' + 
+                'original image filesize from {original_size} MiB to ' + 
+                '{adaptive} MiB, only acheived compression to' +
+                ' {compressed_size} MiB')
 
     compression_size_drop = original_size - compressed_size
     compression_percent_decrease = (compression_size_drop / original_size) * 100
+
+    delete_images()
 
     if not suppress:
         if verbose:

@@ -1,6 +1,7 @@
 import subprocess
 
-TEST_IMAGE_FILEPATH = "/home/ryan/Downloads/image.png"
+TEST_PNG_FILEPATH = "/home/ryan/Downloads/image.png"
+TEST_JPG_FILEPATH = "/home/ryan/Downloads/image.jpg"
 
 with open("README.md", "w") as f:
 
@@ -17,9 +18,10 @@ with open("README.md", "w") as f:
     write_subprocess_to_markdown(["python3", "compress.py", "--help"])
     f.write("# Usage Examples\n")
     write_subprocess_to_markdown(["python3", "compress.py"])
-    write_subprocess_to_markdown(["python3", "compress.py", TEST_IMAGE_FILEPATH])
-    write_subprocess_to_markdown(["python3", "compress.py", TEST_IMAGE_FILEPATH, "-v"])
-    write_subprocess_to_markdown(["python3", "compress.py", TEST_IMAGE_FILEPATH, "-s"])
+    write_subprocess_to_markdown(["python3", "compress.py", TEST_PNG_FILEPATH])
+    write_subprocess_to_markdown(["python3", "compress.py", TEST_PNG_FILEPATH, "-v"])
+    write_subprocess_to_markdown(["python3", "compress.py", TEST_PNG_FILEPATH, "-s"])
     write_subprocess_to_markdown(
-        ["python3", "compress.py", TEST_IMAGE_FILEPATH, "-v", "-q", "50"]
+        ["python3", "compress.py", TEST_PNG_FILEPATH, "-v", "-q", "50"]
     )
+    write_subprocess_to_markdown(["python3", "compress.py", TEST_JPG_FILEPATH, "-a", "1", "-v"])
