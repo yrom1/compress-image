@@ -24,4 +24,6 @@ with open("README.md", "w") as f:
     write_subprocess_to_markdown(
         ["python3", "compress.py", TEST_PNG_FILEPATH, "-v", "-q", "50"]
     )
-    write_subprocess_to_markdown(["python3", "compress.py", TEST_JPG_FILEPATH, "-a", "1", "-v"])
+    write_subprocess_to_markdown(
+        ["python3", "compress.py", TEST_JPG_FILEPATH, "-a", "1", "-v"]
+    )
