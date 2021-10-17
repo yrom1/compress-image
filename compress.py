@@ -7,15 +7,15 @@ DEFAULT_QUALITY = 90
 assert DEFAULT_QUALITY >= 0 and DEFAULT_QUALITY <= 100 and DEFAULT_QUALITY % 5 == 0
 
 def bytes_to_megabytes(bytes: int) -> int:
+    """Convert bytes to mebibytes."""
     return bytes * (1 / 1024 ** 2)
 
-
 def file_path(filepath: str) -> str:
+    """Special type for argparse, a filepath."""
     if os.path.isfile(filepath):
         return filepath
     else:
         raise FileNotFoundError(filepath)
-
 
 def main() -> None:
     parser = argparse.ArgumentParser(
