@@ -25,7 +25,6 @@ with open("README.md", "w") as f:
         f.write("$ " + " ".join(command_list))
         f.write("\n")
         result = subprocess.run(command_list, capture_output=True, text=True)
-        f.write('\nTEST\n\nTEST\nTEST\nTEST\n')
         f.write(result.stdout)
         f.write(result.stderr)
         f.write("```\n")
