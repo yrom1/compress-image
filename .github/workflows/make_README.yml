@@ -21,3 +21,11 @@ jobs:
         with:
           name: output-README
           path: README.md
+      - name: Commit new README.md
+        run: |
+          git config --global user.name 'yrom1'
+          git config --global user.email '${{ secrets.YROM1_EMAIL }}'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git checkout $GITHUB_HEAD_REF
+          git commit -am "Make new README.md."
+          git push
