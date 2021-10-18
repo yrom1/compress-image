@@ -1,0 +1,19 @@
+name: Make README with Python script
+on: push
+jobs:
+  make-README:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Make Readme
+        run: python3 make_README.py
+      - name: Upload README
+        uses: actions/upload-artifact@v2
+        with:
+          name: output-README
+          path: README_OUTPUT.md
