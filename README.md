@@ -26,36 +26,36 @@ usage: compress.py [-h] [-q QUALITY | -a ADAPTIVE] [-v | -s] filepath
 compress.py: error: the following arguments are required: filepath
 ```
 ```
-$ python3 compress.py /home/ryan/Downloads/image.png
-Compressed filesize: 0.77 MB
+$ python3 compress.py image.jpg
+Compressed filesize: 2.3 MB
 ```
 ```
-$ python3 compress.py /home/ryan/Downloads/image.png -v
+$ python3 compress.py image.jpg -v
 Attempting quality setting: 90
 Image compression level: 90
-Original image filetype: .png
-Original filesize: 7.3 MB
-Compressed jpg filesize: 0.77 MB (-6.53 MB, -89.43%)
+Original image filetype: .jpg
+Original filesize: 5.95 MB
+Compressed jpg filesize: 2.3 MB (-3.64 MB, -61.24%)
 ```
 ```
-$ python3 compress.py /home/ryan/Downloads/image.png -s
+$ python3 compress.py image.jpg -s
 ```
 ```
-$ python3 compress.py /home/ryan/Downloads/image.png -v -q 50
+$ python3 compress.py image.jpg -v -q 50
 Attempting quality setting: 50
 Image compression level: 50
-Original image filetype: .png
-Original filesize: 7.3 MB
-Compressed jpg filesize: 0.24 MB (-7.06 MB, -96.7%)
+Original image filetype: .jpg
+Original filesize: 5.95 MB
+Compressed jpg filesize: 0.45 MB (-5.5 MB, -92.44%)
 ```
 ```
-$ python3 compress.py /home/ryan/Downloads/image.jpg -a 1 -v
+$ python3 compress.py image.jpg -a 1 -v
 Attempting quality setting: 90
 Attempting quality setting: 85
 Attempting quality setting: 80
 Attempting quality setting: 75
 Image compression level: 75
 Original image filetype: .jpg
-Original filesize: 8.81 MB
-Compressed jpg filesize: 1.0 MB (-7.81 MB, -88.66%)
+Original filesize: 5.95 MB
+Compressed jpg filesize: 0.99 MB (-4.96 MB, -83.33%)
 ```
