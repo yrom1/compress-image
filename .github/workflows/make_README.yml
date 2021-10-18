@@ -1,4 +1,4 @@
-name: Make README with Python script
+name: automate-push-tasks
 on: push
 jobs:
   make-README:
