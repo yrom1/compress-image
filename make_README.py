@@ -1,8 +1,10 @@
 import os
+import re
 import requests
 import subprocess
 
 JPG_URL = 'https://upload.wikimedia.org/wikipedia/commons/b/bd/Malanggan_Maske_Neuirland_im_%C3%9Cberseemuseum_a_05.JPG'
+TEST_JPG_FILEPATH = 'image.jpg'
 
 def download_image_from_url(url: str, filename = None) -> None:
     """Downloads image from url in current directory with the URL's image filename if not specified."""
@@ -15,8 +17,8 @@ def download_image_from_url(url: str, filename = None) -> None:
     r = requests.get(url, allow_redirects=False, headers=user_agent)
     open(filename + extension.lower(), 'wb').write(r.content)
 
-download_image_from_url(JPG_URL, 'image')
-TEST_JPG_FILEPATH = 'image.jpg'
+filename, extension = os.path.splitext(TEST_JPG_FILEPATH)
+download_image_from_url(JPG_URL, filename)
 
 with open("README.md", "w") as f:
 
