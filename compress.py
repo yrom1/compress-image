@@ -14,7 +14,6 @@ assert (
 SAVED_IMAGES = (
     []
 )  #  should only have one saved image and deleted failed attempts with adpative compression
-CURRENT_IMAGE_QUALITY = -1
 
 
 def bytes_to_megabytes(bytes: int) -> int:
@@ -74,7 +73,7 @@ def main() -> None:
     args = parser.parse_args()
 
     image_path = args.filepath
-    CURRENT_IMAGE_QUALITY = args.quality
+    current_image_quality = args.quality
     verbose = args.verbose
     suppress = args.suppress
     adaptive = args.adaptive
@@ -85,7 +84,7 @@ def main() -> None:
 
     def save_image(image_quality=DEFAULT_QUALITY) -> tuple[str, int]:
         if verbose:
-            print("Attempting quality setting:", CURRENT_IMAGE_QUALITY)
+            print("Attempting quality setting:", current_image_quality)
         image = Image.open(image_path)
         save_path = os.path.join(
             directory, ((f"COMPRESSED-QUAL={image_quality}_{filename}") + ".jpg")
@@ -95,10 +94,10 @@ def main() -> None:
         compressed_size = bytes_to_megabytes(os.path.getsize(save_path))
         return save_path, compressed_size
 
-    if CURRENT_IMAGE_QUALITY == DEFAULT_QUALITY:
+    if current_image_quality == DEFAULT_QUALITY:
         save_path, compressed_size = save_image()
     else:
-        save_path, compressed_size = save_image(image_quality=CURRENT_IMAGE_QUALITY)
+        save_path, compressed_size = save_image(image_quality=current_image_quality)
 
     def delete_images():
         assert len(SAVED_IMAGES) != 0
@@ -109,11 +108,11 @@ def main() -> None:
     SAVED_IMAGES.append(save_path)
     if adaptive is not None:
         if compressed_size > adaptive:
-            for CURRENT_IMAGE_QUALITY in (
+            for current_image_quality in (
                 possible_quality_values := list(range(DEFAULT_QUALITY - 5, -1, -5))
             ):  #  already tried for first quality setting
                 save_path, compressed_size = save_image(
-                    image_quality=CURRENT_IMAGE_QUALITY
+                    image_quality=current_image_quality
                 )
                 SAVED_IMAGES.append(save_path)
                 if compressed_size < adaptive:
@@ -134,7 +133,7 @@ def main() -> None:
 
     if not suppress:
         if verbose:
-            print("Image compression level:", CURRENT_IMAGE_QUALITY)
+            print("Image compression level:", current_image_quality)
             print("Original image filetype:", extension)
             print("Original filesize:", str(round(original_size, 2)), "MB")
         print(
