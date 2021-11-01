@@ -19,8 +19,8 @@ def download_image_from_url(url: str, filename = None) -> None:
     r = requests.get(url, allow_redirects=False, headers=user_agent)
     open(filename + extension.lower(), 'wb').write(r.content)
 
-filename, extension = os.path.splitext(TEST_JPG_FILEPATH)
-download_image_from_url(JPG_URL, filename)
+FILENAME, _ = os.path.splitext(TEST_JPG_FILEPATH)
+download_image_from_url(JPG_URL, FILENAME)
 
 with open("README.md", "w") as f:
 
