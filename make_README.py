@@ -2,6 +2,8 @@ import os
 import re
 import requests
 import subprocess
+from textwrap import dedent
+from typing import List
 
 JPG_URL = 'https://upload.wikimedia.org/wikipedia/commons/b/bd/Malanggan_Maske_Neuirland_im_%C3%9Cberseemuseum_a_05.JPG'
 TEST_JPG_FILEPATH = 'image.jpg'
@@ -22,7 +24,7 @@ download_image_from_url(JPG_URL, filename)
 
 with open("README.md", "w") as f:
 
-    def write_subprocess_to_markdown(command_list: list[str]) -> str:
+    def write_subprocess_to_markdown(command_list: List[str]) -> str:
         f.write("```\n")
         f.write("$ " + " ".join(command_list))
         f.write("\n")
@@ -30,7 +32,14 @@ with open("README.md", "w") as f:
         f.write(result.stdout)
         f.write(result.stderr)
         f.write("```\n")
-
+    badges = """
+    <p align="left">
+    <a href="https://github.com/yrom1/compress-image/blob/main/LICENSE"><img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg"></a>
+    <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+    </p>
+    """
+    f.write(dedent(badges))
+    f.write('\n')
     f.write("# Help\n")
     write_subprocess_to_markdown(["python3", "compress.py", "--help"])
     f.write("# Usage Examples\n")
