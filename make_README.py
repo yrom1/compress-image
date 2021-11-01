@@ -1,9 +1,10 @@
 import os
 import re
-import requests
 import subprocess
 from textwrap import dedent
 from typing import List
+
+import requests
 
 JPG_URL = "https://upload.wikimedia.org/wikipedia/commons/b/bd/Malanggan_Maske_Neuirland_im_%C3%9Cberseemuseum_a_05.JPG"
 TEST_JPG_FILEPATH = "image.jpg"

@@ -1,7 +1,8 @@
-from abc import ABCMeta
+import argparse
 import os
 import sys
-import argparse
+from abc import ABCMeta
+
 from PIL import Image
 
 DEFAULT_QUALITY = 90
