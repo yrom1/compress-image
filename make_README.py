@@ -27,7 +27,7 @@ download_image_from_url(JPG_URL, FILENAME)
 
 with open("README.md", "w") as f:
 
-    def write_subprocess_to_markdown(command_list: List[str]) -> str:
+    def write_subprocess_to_markdown(command_list: List[str]) -> None:
         f.write("```\n")
         f.write("$ " + " ".join(command_list))
         f.write("\n")

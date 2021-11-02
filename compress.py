@@ -2,6 +2,7 @@ import argparse
 import os
 import sys
 from abc import ABCMeta
+from typing import List, Any, Tuple
 
 from PIL import Image
 
@@ -12,12 +13,12 @@ assert (
 assert (
     DEFAULT_QUALITY % 5 == 0
 )  # make adaptive compression easier, rather than search all 100 possibilities
-SAVED_IMAGES = (
+SAVED_IMAGES: List[Any] = (
     []
 )  #  should only have one saved image and deleted failed attempts with adpative compression
 
 
-def bytes_to_megabytes(bytes: int) -> int:
+def bytes_to_megabytes(bytes: int) -> float:
     """Convert bytes to mebibytes."""
     return bytes * (1 / 1024 ** 2)
 
@@ -83,7 +84,7 @@ def main() -> None:
     filename, extension = os.path.splitext(filename_with_extension)
     original_size = bytes_to_megabytes(os.path.getsize(image_path))
 
-    def save_image(image_quality=DEFAULT_QUALITY) -> tuple[str, int]:
+    def save_image(image_quality=DEFAULT_QUALITY) -> Tuple[str, float]:
         if verbose:
             print("Attempting quality setting:", current_image_quality)
         image = Image.open(image_path)
