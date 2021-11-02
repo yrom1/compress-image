@@ -13,7 +13,9 @@ assert (
 assert (
     DEFAULT_QUALITY % 5 == 0
 )  # make adaptive compression easier, rather than search all 100 possibilities
-SAVED_IMAGES: List[Any] = (
+SAVED_IMAGES: List[
+    str
+] = (
     []
 )  #  should only have one saved image and deleted failed attempts with adpative compression
 
