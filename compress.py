@@ -2,7 +2,7 @@ import argparse
 import os
 import sys
 from abc import ABCMeta
-from typing import List, Any, Tuple
+from typing import Any, List, Tuple
 
 from PIL import Image
 
@@ -33,9 +33,9 @@ def file_path(filepath: str) -> str:
         raise FileNotFoundError(filepath)
 
 
-def positive_number(num: str) -> int:
+def positive_number(num_str: str) -> int:
     """Special type for argparse, a positive number."""
-    num = int(num)
+    num = int(num_str)
     if num < 0:
         raise argparse.ArgumentTypeError(
             f"Adaptive compression filesize in MiB must be positive, given {str(num)}."
